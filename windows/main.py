@@ -1,7 +1,7 @@
 import tkinter as tk
 from utils.system_service import SystemService
 from windows.softwares import Softwares
-
+from config import system_services
 class MainWindow:
     def __init__(self, root):
         self.root = root
@@ -10,15 +10,11 @@ class MainWindow:
         # Create the status bar
         self.status_bar = tk.Label(self.root, bd=1, relief=tk.SUNKEN, anchor=tk.W)
         # Create individual labels for each service status
-        self.system_services = {
-            "nginx": {"label":tk.Label(self.status_bar, width=10), "service":SystemService("nginx")},
-            "apache": {"label":tk.Label(self.status_bar, width=10), "service":SystemService("apache2")},
-            "mysql": {"label":tk.Label(self.status_bar, width=10), "service":SystemService("mysql")}
-        }
-
-        # Pack the labels in the status bar
-        for obj in self.system_services.values():
+        self.system_services = system_services
+        for obj in system_services:
+            obj["label"] = tk.Label(self.status_bar, width=10)
             obj["label"].pack(side=tk.LEFT)
+            obj["service"] =SystemService(obj["id"])
 
         self.status_bar.pack(side=tk.BOTTOM, fill=tk.X)
 
@@ -33,7 +29,7 @@ class MainWindow:
         self.root.mainloop()
         
     def update_status(self):
-        for obj in self.system_services.values():
+        for obj in self.system_services:
             obj["service"].check_status()
             obj["label"].config(text= obj["service"].get_text(), fg=obj["service"].color)
         # Schedule the next update after a certain interval (in milliseconds)

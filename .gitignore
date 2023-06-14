@@ -13,3 +13,4 @@ dist/
 
 # Ignore any log files
 *.log
+.vscode/*
