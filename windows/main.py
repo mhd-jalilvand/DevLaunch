@@ -22,7 +22,6 @@ class MainWindow:
         self.open_softwares_button = tk.Button(self.toolbar, text="Installed Softwares", command=self.open_softwares)
         self.open_softwares_button.pack(side=tk.LEFT)
         self.toolbar.pack(side=tk.TOP, fill=tk.X)
-        self.softwares_window = Softwares(self.root)
 
         self.update_status()
         
@@ -36,4 +35,4 @@ class MainWindow:
         self.root.after(5000, self.update_status)
         
     def open_softwares(self):
-        self.softwares_window.create_overlay_window()
+        Softwares(self.root).create_overlay_window()
