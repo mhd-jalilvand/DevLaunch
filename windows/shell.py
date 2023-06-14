@@ -29,6 +29,7 @@ class Shell:
         self.run_button.pack()
 
     def run_command(self):
+        self.run_button.configure(state=tk.DISABLED)
         # Get the password if sudo is enabled
         password = self.password_entry.get() if self.use_sudo else None
 
