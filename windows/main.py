@@ -1,6 +1,7 @@
 import tkinter as tk
 from utils.system_service import SystemService
 from windows.softwares import Softwares
+from windows.wordpress import Wordpress
 from config import system_services
 class MainWindow:
     def __init__(self, root):
@@ -20,7 +21,9 @@ class MainWindow:
 
         self.toolbar = tk.Frame(self.root, bd=1, relief=tk.RAISED)
         self.open_softwares_button = tk.Button(self.toolbar, text="Installed Softwares", command=self.open_softwares)
+        self.open_wordpress_button = tk.Button(self.toolbar, text="New Wordpress", command=self.create_wordpress)
         self.open_softwares_button.pack(side=tk.LEFT)
+        self.open_wordpress_button.pack(side=tk.LEFT)
         self.toolbar.pack(side=tk.TOP, fill=tk.X)
 
         self.update_status()
@@ -36,3 +39,6 @@ class MainWindow:
         
     def open_softwares(self):
         Softwares(self.root).create_overlay_window()
+
+    def create_wordpress(self):
+        Wordpress(self.root).create_overlay_window()
