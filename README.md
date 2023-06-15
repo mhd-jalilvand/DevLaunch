@@ -54,4 +54,22 @@ Contributions are welcome! If you would like to contribute to this project, plea
 
 
 
+### Features tree
+
+- wordpress
+    - install new site
+        - checkbox for extensions
+        - check for update
+        - copy extract files
+        - install database
+        - run installer and create admin user
+    - edit current site
+        - update admin user pass
+        - reset database
+        - update
+        - fresh install
+- laravel
+    - create new project
+    - install packages
+    - run project
 
